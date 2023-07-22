@@ -1,0 +1,7 @@
+res://scenes/level.tscn
+res://scenes/player.tscn
+res://scenes/object.gd
+res://scenes/object.tscn
+res://scenes/test.tscn
+res://scenes/player.gd
+res://scenes/level.gdshader
