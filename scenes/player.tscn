@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c7ualkcahfikd"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_7cirw"]
-[ext_resource type="Texture2D" uid="uid://by03hs6fcpqil" path="res://assets/pirate/PNG/Default size/Ships/ship (1).png" id="2_ciccr"]
+[ext_resource type="Texture2D" uid="uid://dku5ks3n67ryk" path="res://assets/pirate/PNG/Default size/Ships/ship (1).png" id="2_ciccr"]
 [ext_resource type="PackedScene" uid="uid://ddvjwqjgirb3m" path="res://scenes/trail_particle.tscn" id="3_exj5l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiutd"]
@@ -152,3 +152,10 @@ offset_bottom = 23.0
 libraries = {
 "": SubResource("AnimationLibrary_hnet1")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.5708
+scale = Vector2(1.68, 1.12)
+shape = SubResource("RectangleShape2D_yiutd")

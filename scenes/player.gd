@@ -4,17 +4,22 @@ const PLAYER_INITIAL_SPEED = 10
 const PLAYER_MAX_SPEED = 600
 var player_speed = PLAYER_INITIAL_SPEED
 var mouse_position = null
-var fuel = 100;
-var player_max_fuel = 200
-var player_fuel_loss_rate = 1
+var fuel = 150
+var player_max_fuel = 150
+var player_fuel_loss_rate = 0.013
 var animation_played = false
+var candy_list = []
 
 signal no_fuel_left;
-
+#100 =  arriver à l'entrée du lab
+#200 = arriver au bout du bonbon
+#150-200 pour chopper 2 bonbonz
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	Signals.player_entered.connect(_on_candy_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,4 +62,9 @@ func move_player_while_looking_at_mouse():
 func progressive_ship_startup(speed_increase, timer):
 	player_speed += speed_increase
 	await get_tree().create_timer(timer).timeout
-
+	
+func _on_candy_entered(candy):
+	var newcandy = candy.duplicate()
+	candy_list.append(newcandy)
+	candy.queue_free()
+	
