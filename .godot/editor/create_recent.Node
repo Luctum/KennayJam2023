@@ -1,4 +1,8 @@
-Node
-AnimatedSprite2D
 Sprite2D
-Area2D
+AnimationPlayer
+RichTextLabel
+Label
+Node
+CPUParticles2D
+GPUParticles2D
+Timer

@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
-var player_speed = 200
+const PLAYER_INITIAL_SPEED = 10
+const PLAYER_MAX_SPEED = 600
+var player_speed = PLAYER_INITIAL_SPEED
 var mouse_position = null
+var fuel = 100;
+var player_max_fuel = 200
+var player_fuel_loss_rate = 1
+var animation_played = false
 
-
-
+signal no_fuel_left;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,13 +19,42 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$DebugLabel.text = str(fuel)
+	if fuel <= 0:
+		emit_signal("no_fuel_left")
+		
+
 
 func _physics_process(delta):
 	mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - position).normalized()
-	print_debug()
 	velocity = direction * player_speed
-	if position.x + 5 <  mouse_position.x || position.x -5 > mouse_position.x:
-		move_and_slide()
-		look_at(mouse_position)
+	if is_cursor_away_from_player && Input.is_action_pressed("forward") && fuel > 0:
+		fuel -= player_speed * player_fuel_loss_rate * delta
+		move_player_while_looking_at_mouse()
+		if player_speed < PLAYER_MAX_SPEED && player_speed:
+			progressive_ship_startup(5, 1)
+			if !animation_played:
+				$AnimationPlayer.play("start")
+				fuel -= 5
+				animation_played = true
+	else:
+		if player_speed > PLAYER_INITIAL_SPEED:
+			move_player_while_looking_at_mouse()
+			progressive_ship_startup(-5, 1)
+			animation_played = false
+
+
+func is_cursor_away_from_player():
+	return position.x + 5 <  mouse_position.x || position.x - 5 > mouse_position.x 
+
+
+func move_player_while_looking_at_mouse():
+	move_and_slide()
+	look_at(mouse_position)
+
+
+func progressive_ship_startup(speed_increase, timer):
+	player_speed += speed_increase
+	await get_tree().create_timer(timer).timeout
+

@@ -1,5 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://c22lnxmloho5i"]
 
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_1vcoo"]
 [ext_resource type="Texture2D" uid="uid://p3kailadjlof" path="res://assets/platformer/Spritesheets/spritesheet_complete.png" id="1_dd6da"]
 [ext_resource type="Texture2D" uid="uid://11etlywpamu6" path="res://assets/pirate/Tilesheet/tiles_sheet.png" id="2_pirr2"]
 [ext_resource type="PackedScene" uid="uid://c7ualkcahfikd" path="res://scenes/player.tscn" id="4_hvapu"]
@@ -51613,6 +51614,7 @@ animations = [{
 }]
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_1vcoo")
 
 [node name="TileMap" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_jewre")
@@ -51829,3 +51831,4 @@ position = Vector2(-1178, 2085)
 [node name="Mouse" type="Sprite2D" parent="."]
 position = Vector2(848, 1449)
 texture = ExtResource("12_yxdc4")
+[connection signal="no_fuel_left" from="Player" to="." method="_on_player_no_fuel_left"]

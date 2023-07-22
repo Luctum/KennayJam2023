@@ -1,7 +1,9 @@
-res://scenes/level.tscn
 res://scenes/player.tscn
-res://scenes/object.gd
-res://scenes/object.tscn
-res://scenes/test.tscn
 res://scenes/player.gd
-res://scenes/level.gdshader
+res://scenes/level.tscn
+res://particle.gdshader
+res://scenes/trail_particle.tscn
+res://scenes/level.gd
+res://scenes/black_fade.tscn
+res://scenes/scene_transition.tscn
+res://scenes/scene_transition.gd
