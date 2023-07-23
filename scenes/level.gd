@@ -9,7 +9,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$UserInterface.position = $Player.position
+	$UserInterface.position.y += 75
+	$UserInterface.current_fuel = $Player.fuel
+	$UserInterface.max_fuel = $Player.player_max_fuel
+	$Control.position = $Player.position
+	$Control.position.x -= 600
+	$Control.position.y -= 350
+	
+	$Control.compteur_bonbon_value = $Player.candy_list.size()
 
 
 func _on_player_no_fuel_left():
@@ -50,5 +58,6 @@ func _on_king_candy_candy_touched():
 	$Sounds/Victory.play(0.0)
 	$FonduNoir.visible = true
 	$Player.player_can_move = false
+	$FonduNoir.position = $Player.position
 	SceneTransition.transition_dissolve_back()
 

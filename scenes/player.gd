@@ -4,9 +4,9 @@ const PLAYER_INITIAL_SPEED = 10
 const PLAYER_MAX_SPEED = 600
 var player_speed = PLAYER_INITIAL_SPEED
 var mouse_position = null
-var fuel = 5000
-var player_max_fuel = 5000
-var player_fuel_loss_rate = 0.015
+var fuel = 150
+var player_max_fuel = 150
+var player_fuel_loss_rate = 0.013
 var animation_played = false
 var candy_list = []
 
@@ -22,7 +22,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$DebugLabel.text = str(fuel)
 	if fuel <= 0:
 		emit_signal("no_fuel_left")
 		
