@@ -6,14 +6,11 @@ var player_speed = PLAYER_INITIAL_SPEED
 var mouse_position = null
 var fuel = 150
 var player_max_fuel = 150
-var player_fuel_loss_rate = 0.013
+var player_fuel_loss_rate = 0.015
 var animation_played = false
 var candy_list = []
 
 signal no_fuel_left;
-#100 =  arriver à l'entrée du lab
-#200 = arriver au bout du bonbon
-#150-200 pour chopper 2 bonbonz
  
 
 # Called when the node enters the scene tree for the first time.
@@ -43,11 +40,14 @@ func _physics_process(delta):
 				$AnimationPlayer.play("start")
 				fuel -= 5
 				animation_played = true
+			$Sounds/Wind.play()
+			
 	else:
 		if player_speed > PLAYER_INITIAL_SPEED:
 			move_player_while_looking_at_mouse()
 			progressive_ship_startup(-5, 1)
 			animation_played = false
+			$Sounds/Wind.stop()
 
 
 func is_cursor_away_from_player():
@@ -65,6 +65,6 @@ func progressive_ship_startup(speed_increase, timer):
 	
 func _on_candy_entered(candy):
 	var newcandy = candy.duplicate()
+	$Sounds/Coin.play(0.0)
 	candy_list.append(newcandy)
 	candy.queue_free()
-	

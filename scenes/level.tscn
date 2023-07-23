@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c22lnxmloho5i"]
+[gd_scene load_steps=40 format=3 uid="uid://c22lnxmloho5i"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_1vcoo"]
 [ext_resource type="Texture2D" uid="uid://bion854ebvbwc" path="res://assets/pirate/Tilesheet/tiles_sheet.png" id="2_pirr2"]
@@ -16,7 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://cef4wc5anxln6" path="res://assets/pirate/PNG/Default size/Ship parts/hullLarge (4).png" id="13_ackxl"]
 [ext_resource type="Texture2D" uid="uid://cb67vxn1ik42q" path="res://assets/pirate/PNG/Default size/Ship parts/hullSmall (3).png" id="14_iw0xd"]
 [ext_resource type="PackedScene" uid="uid://0lrtoxvy4uwj" path="res://scenes/king_candy.tscn" id="18_3js4m"]
+[ext_resource type="AudioStream" uid="uid://bbxmx0mfmmxm3" path="res://assets/sounds/ambiance.ogg" id="18_n87yl"]
 [ext_resource type="Texture2D" uid="uid://bcmtxa7jrxa3m" path="res://assets/particles/magic_03.png" id="18_t7c8n"]
+[ext_resource type="AudioStream" uid="uid://bovsk1lbhswbf" path="res://assets/sounds/SuperSugarSailor_MainTheme.ogg" id="19_7o08o"]
+[ext_resource type="AudioStream" uid="uid://jfufmwdt1k2r" path="res://assets/sounds/Wind2.ogg" id="19_lmbdt"]
+[ext_resource type="AudioStream" uid="uid://deo7mm0pbogpr" path="res://assets/sounds/1_Coins.ogg" id="20_t6puv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jewre"]
 
@@ -51896,6 +51900,30 @@ texture = ExtResource("12_yxdc4")
 [node name="KingCandy" parent="." instance=ExtResource("18_3js4m")]
 position = Vector2(-6468, -4056)
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("19_7o08o")
+autoplay = true
+bus = &"Music"
+
+[node name="Wind" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("19_lmbdt")
+volume_db = 14.857
+pitch_scale = 1.42
+bus = &"Music"
+
+[node name="Coin" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("20_t6puv")
+volume_db = 11.886
+bus = &"Sfx1"
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("18_n87yl")
+autoplay = true
+bus = &"Ambiance"
+
 [connection signal="player_back_to_spawn" from="." to="." method="_on_player_back_to_spawn"]
 [connection signal="area_entered" from="Magic03/Spawn" to="." method="_on_area_2d_area_entered"]
+[connection signal="no_fuel_left" from="Player" to="." method="_on_player_no_fuel_left"]
 [connection signal="candy_touched" from="KingCandy" to="." method="_on_king_candy_candy_touched"]

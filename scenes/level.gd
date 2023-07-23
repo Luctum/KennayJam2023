@@ -18,7 +18,7 @@ func _on_player_no_fuel_left():
 	await SceneTransition.transition_finished
 	reset_played_pos_fade_in()
 	SceneTransition.transition_dissolve_back()
-
+ 
  
 func reset_played_pos_fade_in(replacecandies=true):
 	$Player.position.x = 377
@@ -26,6 +26,8 @@ func reset_played_pos_fade_in(replacecandies=true):
 	$Player.rotation_degrees = 158
 	$Player.fuel = $Player.player_max_fuel
 	$Player.player_speed = $Player.PLAYER_INITIAL_SPEED
+	if $Player.candy_list.size() > 0:
+		$Sounds/Coin.play()
 	if replacecandies :
 		for candy in $Player.candy_list:
 			add_child(candy)
@@ -42,4 +44,4 @@ func _on_area_2d_area_entered(area):
 
 func _on_king_candy_candy_touched():
 	SceneTransition.transition_dissolve()
-	#
+	$Sounds/Coin.play(0.0)

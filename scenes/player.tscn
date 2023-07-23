@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7ualkcahfikd"]
+[gd_scene load_steps=11 format=3 uid="uid://c7ualkcahfikd"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_7cirw"]
 [ext_resource type="Texture2D" uid="uid://dku5ks3n67ryk" path="res://assets/pirate/PNG/Default size/Ships/ship (1).png" id="2_ciccr"]
+[ext_resource type="AudioStream" uid="uid://bovsk1lbhswbf" path="res://assets/sounds/SuperSugarSailor_MainTheme.ogg" id="3_si6rr"]
+[ext_resource type="AudioStream" uid="uid://jfufmwdt1k2r" path="res://assets/sounds/Wind2.ogg" id="4_j81mm"]
+[ext_resource type="AudioStream" uid="uid://deo7mm0pbogpr" path="res://assets/sounds/1_Coins.ogg" id="5_ss7sh"]
+[ext_resource type="AudioStream" uid="uid://bbxmx0mfmmxm3" path="res://assets/sounds/ambiance.ogg" id="6_dyxjx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiutd"]
 size = Vector2(48, 112)
@@ -155,3 +159,27 @@ libraries = {
 rotation = -1.5708
 scale = Vector2(1.68, 1.12)
 shape = SubResource("RectangleShape2D_yiutd")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_si6rr")
+autoplay = true
+bus = &"Music"
+
+[node name="Wind" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_j81mm")
+volume_db = 4.952
+autoplay = true
+bus = &"Music"
+
+[node name="Coin" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_ss7sh")
+volume_db = 11.886
+autoplay = true
+bus = &"Sfx1"
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_dyxjx")
+autoplay = true
+bus = &"Ambiance"
