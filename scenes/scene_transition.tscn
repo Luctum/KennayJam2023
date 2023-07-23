@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdx13orshvsrh"]
+[gd_scene load_steps=7 format=3 uid="uid://cdx13orshvsrh"]
 
 [ext_resource type="Script" path="res://scenes/scene_transition.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://dck00ltcx6ykk" path="res://assets/patterns/waves.png" id="2"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "RESET"
@@ -104,4 +103,3 @@ libraries = {
 
 [node name="clouds" type="TextureRect" parent="."]
 visible = false
-texture = ExtResource("2")

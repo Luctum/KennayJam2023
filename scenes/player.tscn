@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7ualkcahfikd"]
+[gd_scene load_steps=7 format=3 uid="uid://c7ualkcahfikd"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_7cirw"]
 [ext_resource type="Texture2D" uid="uid://dku5ks3n67ryk" path="res://assets/pirate/PNG/Default size/Ships/ship (1).png" id="2_ciccr"]
-[ext_resource type="PackedScene" uid="uid://ddvjwqjgirb3m" path="res://scenes/trail_particle.tscn" id="3_exj5l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiutd"]
 size = Vector2(48, 112)
@@ -132,9 +131,6 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7cirw")
-
-[node name="Node2D" parent="." instance=ExtResource("3_exj5l")]
-position = Vector2(-57, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708

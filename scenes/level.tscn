@@ -51898,5 +51898,4 @@ position = Vector2(-6468, -4056)
 
 [connection signal="player_back_to_spawn" from="." to="." method="_on_player_back_to_spawn"]
 [connection signal="area_entered" from="Magic03/Spawn" to="." method="_on_area_2d_area_entered"]
-[connection signal="no_fuel_left" from="Player" to="." method="_on_player_no_fuel_left"]
 [connection signal="candy_touched" from="KingCandy" to="." method="_on_king_candy_candy_touched"]
