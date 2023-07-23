@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://bo1hep1glno6"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bo1hep1glno6"]
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_p8wbg"]
 resource_name = "Compressor"
@@ -8,7 +8,11 @@ resource_name = "Reverb"
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_3dny2"]
 resource_name = "Reverb"
-room_size = 0.27
+room_size = 0.13
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_f3xr5"]
+resource_name = "Amplify"
+volume_db = 17.83
 
 [resource]
 bus/0/volume_db = -8.36003
@@ -16,13 +20,13 @@ bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -0.634891
+bus/1/volume_db = -2.0903
 bus/1/send = &"Master"
 bus/2/name = &"Ambiance"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -5.79889
+bus/2/volume_db = -4.33457
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectCompressor_p8wbg")
 bus/2/effect/0/enabled = true
@@ -44,7 +48,9 @@ bus/5/name = &"Wind"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = 3.63135
+bus/5/volume_db = 6.02
 bus/5/send = &"Master"
 bus/5/effect/0/effect = SubResource("AudioEffectReverb_3dny2")
 bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource("AudioEffectAmplify_f3xr5")
+bus/5/effect/1/enabled = true

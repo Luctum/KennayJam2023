@@ -44,4 +44,11 @@ func _on_area_2d_area_entered(area):
 
 func _on_king_candy_candy_touched():
 	SceneTransition.transition_dissolve()
+	await SceneTransition.transition_finished
+	$Sounds/Music.stop()
 	$Sounds/Coin.play(0.0)
+	$Sounds/Victory.play(0.0)
+	$FonduNoir.visible = true
+	$Player.player_can_move = false
+	SceneTransition.transition_dissolve_back()
+

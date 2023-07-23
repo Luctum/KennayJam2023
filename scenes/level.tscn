@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c22lnxmloho5i"]
+[gd_scene load_steps=43 format=3 uid="uid://c22lnxmloho5i"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_1vcoo"]
 [ext_resource type="Texture2D" uid="uid://bion854ebvbwc" path="res://assets/pirate/Tilesheet/tiles_sheet.png" id="2_pirr2"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bovsk1lbhswbf" path="res://assets/sounds/SuperSugarSailor_MainTheme.ogg" id="19_7o08o"]
 [ext_resource type="AudioStream" uid="uid://jfufmwdt1k2r" path="res://assets/sounds/Wind2.ogg" id="19_lmbdt"]
 [ext_resource type="AudioStream" uid="uid://deo7mm0pbogpr" path="res://assets/sounds/1_Coins.ogg" id="20_t6puv"]
+[ext_resource type="AudioStream" uid="uid://4cy4yl4l7mfv" path="res://assets/sounds/victory.ogg" id="22_kus2s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jewre"]
 
@@ -51656,6 +51657,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_qthas"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xdonl"]
+gradient = SubResource("Gradient_qthas")
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_1vcoo")
 
@@ -51700,12 +51708,6 @@ scale = Vector2(19.1645, 19.1645)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Magic03/Spawn"]
 position = Vector2(-3.8147e-06, 1.19209e-06)
 shape = SubResource("CircleShape2D_p6hja")
-
-[node name="Player" parent="." instance=ExtResource("4_hvapu")]
-position = Vector2(377, 6)
-rotation = 2.75731
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Assets" type="Node" parent="."]
 
@@ -51897,6 +51899,40 @@ position = Vector2(-1178, 2085)
 position = Vector2(848, 1449)
 texture = ExtResource("12_yxdc4")
 
+[node name="FonduNoir" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6464, -4052)
+scale = Vector2(58.0999, 35.5525)
+texture = SubResource("GradientTexture2D_xdonl")
+
+[node name="Label" type="Label" parent="FonduNoir"]
+offset_left = -13.408
+offset_top = -8.86023
+offset_right = 416.592
+offset_bottom = 121.14
+scale = Vector2(0.0658931, 0.0961858)
+theme_override_font_sizes/font_size = 0
+text = "\"Ye be a true pirate legend! Well done, me hearty! Arrr!\""
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="FonduNoir"]
+offset_left = -13.735
+offset_top = 4.50043
+offset_right = 416.265
+offset_bottom = 134.5
+scale = Vector2(0.0658931, 0.0961858)
+theme_override_font_sizes/font_size = 0
+text = "Thanks for playing ! :)
+Made by DarkSandwich
+and Unrealvision"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("4_hvapu")]
+position = Vector2(377, 6)
+rotation = 2.75731
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
 [node name="KingCandy" parent="." instance=ExtResource("18_3js4m")]
 position = Vector2(-6468, -4056)
 
@@ -51922,6 +51958,10 @@ bus = &"Sfx1"
 stream = ExtResource("18_n87yl")
 autoplay = true
 bus = &"Ambiance"
+
+[node name="Victory" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("22_kus2s")
+bus = &"Music"
 
 [connection signal="player_back_to_spawn" from="." to="." method="_on_player_back_to_spawn"]
 [connection signal="area_entered" from="Magic03/Spawn" to="." method="_on_area_2d_area_entered"]

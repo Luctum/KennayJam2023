@@ -164,22 +164,18 @@ shape = SubResource("RectangleShape2D_yiutd")
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_si6rr")
-autoplay = true
 bus = &"Music"
 
 [node name="Wind" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("4_j81mm")
 volume_db = 4.952
-autoplay = true
 bus = &"Music"
 
 [node name="Coin" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("5_ss7sh")
 volume_db = 11.886
-autoplay = true
 bus = &"Sfx1"
 
 [node name="Ambiance" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("6_dyxjx")
-autoplay = true
 bus = &"Ambiance"

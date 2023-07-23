@@ -4,14 +4,15 @@ const PLAYER_INITIAL_SPEED = 10
 const PLAYER_MAX_SPEED = 600
 var player_speed = PLAYER_INITIAL_SPEED
 var mouse_position = null
-var fuel = 150
-var player_max_fuel = 150
+var fuel = 5000
+var player_max_fuel = 5000
 var player_fuel_loss_rate = 0.015
 var animation_played = false
 var candy_list = []
 
 signal no_fuel_left;
  
+var player_can_move = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,8 +56,9 @@ func is_cursor_away_from_player():
 
 
 func move_player_while_looking_at_mouse():
-	move_and_slide()
-	look_at(mouse_position)
+	if player_can_move:
+		move_and_slide()
+		look_at(mouse_position)
 
 
 func progressive_ship_startup(speed_increase, timer):
